@@ -1,0 +1,152 @@
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.login-card {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 450px;
+}
+
+.login-title {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #2c3e50;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.register-section {
+    border-bottom: 2px solid #f8f9fa;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-label {
+    margin: 3px;
+    font-weight: 500;
+    color: #2c3e50;
+    font-size: 15px;
+}
+
+.form-input {
+    padding: 12px 16px;
+    border: 2px solid #e9ecef;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.form-input::placeholder {
+    color: #adb5bd;
+}
+
+.form-buttons {
+    margin-top: 10px;
+}
+
+.submit-btn {
+    padding: 14px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    width: 100%;
+}
+
+.submit-btn:hover {
+    transform: translateY(-1px);
+}
+
+.form-links {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.form-link {
+    color: #667eea;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.form-link:hover {
+    color: #5a67d8;
+    text-decoration: underline;
+}
+
+.error-message {
+    background: #fee2e2;
+    color: #dc2626;
+    padding: 12px 16px;
+    border-radius: 6px;
+    border: 1px solid #fecaca;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .login-card {
+        padding: 30px;
+        margin: 15px;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-card {
+        padding: 25px;
+    }
+    
+    .login-title {
+        font-size: 20px;
+    }
+    
+    .form-input {
+        padding: 10px 14px;
+    }
+    
+    .submit-btn {
+        padding: 12px;
+        font-size: 14px;
+    }
+}
