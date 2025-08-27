@@ -63,8 +63,8 @@ export default function TaskModal({ task, isOpen, onClose, onSave, subordinates,
 
     try {
       const url = task 
-        ? `http://localhost:3000/api/tasks/${task.id}`
-        : 'http://localhost:3000/api/tasks'
+        ? `https://esoft-todo-list-production.up.railway.app/api/tasks/${task.id}`
+        : 'https://esoft-todo-list-production.up.railway.app/api/tasks'
       
       const method = task ? 'PUT' : 'POST'
       const dataToSend = canOnlyEditStatus ? { status: formData.status } : formData

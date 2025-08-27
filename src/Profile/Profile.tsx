@@ -20,7 +20,7 @@ export default function Profile() {
 
     const fetchLeaderName = async (leaderId: number) => {
         try {
-            const response = await fetch(`http://localhost:3000/api/users/${leaderId}`, {
+            const response = await fetch(`https://esoft-todo-list-production.up.railway.app/api/users/${leaderId}`, {
                 credentials: 'include'
             })
             

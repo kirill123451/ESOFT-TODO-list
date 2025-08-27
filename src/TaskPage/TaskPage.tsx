@@ -56,8 +56,8 @@ export default function TasksPage() {
       setError('')
       
       const url = grouping === 'none' 
-        ? 'http://localhost:3000/api/tasks'
-        : `http://localhost:3000/api/tasks?group=${grouping}`
+        ? 'https://esoft-todo-list-production.up.railway.app/api/tasks'
+        : `https://esoft-todo-list-production.up.railway.app/api/tasks?group=${grouping}`
       
       const response = await fetch(url, {
         credentials: 'include'

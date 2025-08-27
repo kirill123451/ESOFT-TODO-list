@@ -11,7 +11,7 @@ export default function ProtectedRoute({ children }: { children: JSX.Element }) 
 
     const checkAuth = async () => {
         try {
-            const response = await fetch('http://localhost:3000/api/auth/check', {
+            const response = await fetch('https://esoft-todo-list-production.up.railway.app/api/auth/check', {
                 credentials: 'include'
             })
             

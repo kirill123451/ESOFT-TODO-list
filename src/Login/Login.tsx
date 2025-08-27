@@ -21,10 +21,10 @@ export default function Login() {
             let url, body
 
             if (mode === 'login') {
-                url = 'http://localhost:3000/api/auth/login'
+                url = 'https://esoft-todo-list-production.up.railway.app/api/auth/login'
                 body = JSON.stringify({ login, password })
             } else {
-                url = 'http://localhost:3000/api/users'
+                url = 'https://esoft-todo-list-production.up.railway.app/api/users'
                 body = JSON.stringify({ 
                     name, surname, patronymic, login, password, 
                     leader_id: leader ? parseInt(leader) : null 
