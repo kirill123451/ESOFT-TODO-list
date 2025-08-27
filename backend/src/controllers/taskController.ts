@@ -1,7 +1,7 @@
 import { Response } from 'express';
 import { AuthRequest } from '../middleware/auth';
 import { createTask, updateTask, getUserTasks, getTasksByDateGroup, getTasksByResponsible, findTaskById } from '../models/task';
-import { findUserById, isUserSubordinate } from '../models/user';
+import { findUserById, isUserSubordinate, getSubordinates } from '../models/user';
 
 export const createNewTask = async (req: AuthRequest, res: Response): Promise<void> => {
   try {
@@ -97,7 +97,12 @@ export const getTasks = async (req: AuthRequest, res: Response): Promise<void> =
     if (group === 'date') {
       tasks = await getTasksByDateGroup(userId)
     } else if (group === 'responsible') {
-      tasks = await getTasksByResponsible(userId)
+      const subordinates = await getSubordinates(userId)
+      if (subordinates.length === 0) {
+        tasks = {}
+      } else {
+        tasks = await getTasksByResponsible(userId)
+      }
     } else {
       tasks = await getUserTasks(userId)
     }

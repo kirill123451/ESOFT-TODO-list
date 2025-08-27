@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import './App.css'
 import Header from './Header/Header'
-import TaskForm from './TaskForm/TaskForm'
 import Login from './Login/Login'
 import Profile from './Profile/Profile'
 import TasksPage from './TaskPage/TaskPage'
@@ -19,14 +18,6 @@ function App() {
             element={
               <ProtectedRoute>
                 <TasksPage />
-              </ProtectedRoute>
-            } 
-          />
-          <Route 
-            path="/task-form" 
-            element={
-              <ProtectedRoute>
-                <TaskForm />
               </ProtectedRoute>
             } 
           />
