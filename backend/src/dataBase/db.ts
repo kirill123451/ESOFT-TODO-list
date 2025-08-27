@@ -14,6 +14,10 @@ const pool = new Pool({
 })
 
 export async function testConnetion() {
+    console.log('Using DATABASE_URL:', process.env.DATABASE_URL)
+    console.log('Using DB_HOST:', process.env.DB_HOST)
+
+
     let client
     try {
         client = await pool.connect()
