@@ -37,7 +37,6 @@ export default function TaskModal({ task, isOpen, onClose, onSave, subordinates,
   
   const isCreator = task ? task.creator_id === currentUserId : true
   const canOnlyEditStatus = Boolean(task) && !isCreator
-  const isStatusChanged = task ? formData.status !== task.status : true
 
   useEffect(() => {
     if (task) {
