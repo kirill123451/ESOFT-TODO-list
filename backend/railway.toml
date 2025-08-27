@@ -1,0 +1,13 @@
+[build]
+builder = "nixpacks"
+
+[deploy]
+startCommand = "npm start"
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10
+
+[[services]]
+name = "esoft-todo-list-backend"
+type = "web"
+httpPort = 8080
+runCommand = "npm start"
