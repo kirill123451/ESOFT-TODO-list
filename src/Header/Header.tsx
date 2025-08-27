@@ -26,7 +26,6 @@ export default function Header() {
                 <h1>TODO List</h1>
                 <nav className="header-nav">
                     <Link to='/tasks' className='nav-link'>Задачи</Link>
-                    <Link to='/task-form' className='nav-link'>Новая задача</Link>
                     {user ? (
                         <Link to='/profile' className='nav-link'>
                             {user.name} {user.surname}

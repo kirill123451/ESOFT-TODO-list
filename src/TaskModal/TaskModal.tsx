@@ -36,7 +36,8 @@ export default function TaskModal({ task, isOpen, onClose, onSave, subordinates,
   const [isLoading, setIsLoading] = useState(false)
   
   const isCreator = task ? task.creator_id === currentUserId : true
-  const canOnlyEditStatus = task && !isCreator
+  const canOnlyEditStatus = Boolean(task) && !isCreator
+  const isStatusChanged = task ? formData.status !== task.status : true
 
   useEffect(() => {
     if (task) {
@@ -67,12 +68,13 @@ export default function TaskModal({ task, isOpen, onClose, onSave, subordinates,
         : 'http://localhost:3000/api/tasks'
       
       const method = task ? 'PUT' : 'POST'
+      const dataToSend = canOnlyEditStatus ? { status: formData.status } : formData
 
       const response = await fetch(url, {
         method,
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(dataToSend)
       })
 
       if (!response.ok) {
@@ -201,7 +203,7 @@ export default function TaskModal({ task, isOpen, onClose, onSave, subordinates,
             <button 
               type="submit" 
               className="submit-btn"
-              disabled={isLoading || subordinates.length === 0}
+              disabled={isLoading || (!task && subordinates.length === 0)}
             >
               {isLoading ? 'Сохранение...' : (task ? 'Сохранить' : 'Создать')}
             </button>

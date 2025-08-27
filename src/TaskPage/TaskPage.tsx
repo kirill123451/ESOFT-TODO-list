@@ -37,7 +37,7 @@ export default function TasksPage() {
   const [modalOpen, setModalOpen] = useState(false)
   const [selectedTask, setSelectedTask] = useState<Task | null>(null)
   const [subordinates, setSubordinates] = useState<any[]>([])
-  const [currentUserId, setCurrentUserId] = useState<number | null>(null)
+  const [currentUserId, setCurrentUserId] = useState<number>(-1)
 
   useEffect(() => {
     const userData = localStorage.getItem('user');
