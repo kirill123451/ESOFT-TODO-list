@@ -40,7 +40,6 @@ export default function TasksPage() {
   const [currentUserId, setCurrentUserId] = useState<number | null>(null)
 
   useEffect(() => {
-    // Получаем ID текущего пользователя из localStorage
     const userData = localStorage.getItem('user');
     if (userData) {
       const user = JSON.parse(userData);
@@ -304,7 +303,7 @@ export default function TasksPage() {
         onClose={handleCloseModal}
         onSave={handleSaveTask}
         subordinates={subordinates}
-        currentUserId={currentUserId} // Передаем ID текущего пользователя
+        currentUserId={currentUserId} 
       />
     </div>
   )

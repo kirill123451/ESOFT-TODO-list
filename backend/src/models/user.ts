@@ -42,26 +42,26 @@ export const findUserByLogin = async (login: string): Promise<User | null> => {
 }
 
 export const getSubordinates = async (leaderId: number): Promise<User[]> => {
-  console.log(`Getting subordinates for leader: ${leaderId}`);
+  console.log(`Getting subordinates for leader: ${leaderId}`)
   
   const query = `
     SELECT id, name, surname, patronymic, login 
     FROM users 
     WHERE leader_id = $1
-  `;
+  `
   
   try {
-    const { rows } = await pool.query(query, [leaderId]);
-    console.log(`Found ${rows.length} subordinates`);
-    return rows;
+    const { rows } = await pool.query(query, [leaderId])
+    console.log(`Found ${rows.length} subordinates`)
+    return rows
   } catch (error) {
-    console.error('Error in getSubordinates:', error);
-    return [];
+    console.error('Error in getSubordinates:', error)
+    return []
   }
-};
+}
 
 export const isUserSubordinate = async (leaderId: number, subordinateId: number): Promise<boolean> => {
-    const query = `SELECT id FROM users WHERE id = $1 AND leader_id = $2`;
-    const { rows } = await pool.query(query, [subordinateId, leaderId]);
+    const query = `SELECT id FROM users WHERE id = $1 AND leader_id = $2`
+    const { rows } = await pool.query(query, [subordinateId, leaderId])
     return rows.length > 0
 }

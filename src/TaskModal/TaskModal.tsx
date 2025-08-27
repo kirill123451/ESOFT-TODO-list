@@ -20,7 +20,7 @@ interface TaskModalProps {
   onClose: () => void
   onSave: () => void
   subordinates: any[]
-  currentUserId: number // Добавляем ID текущего пользователя
+  currentUserId: number
 }
 
 export default function TaskModal({ task, isOpen, onClose, onSave, subordinates, currentUserId }: TaskModalProps) {
@@ -35,16 +35,14 @@ export default function TaskModal({ task, isOpen, onClose, onSave, subordinates,
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   
-  // Проверяем, является ли текущий пользователь создателем задачи
   const isCreator = task ? task.creator_id === currentUserId : true
-  // Проверяем, можно ли редактировать только статус (не создатель и задача существует)
   const canOnlyEditStatus = task && !isCreator
 
   useEffect(() => {
     if (task) {
       setFormData({
         ...task,
-        end_date: task.end_date.split('T')[0] // Format date for input[type="date"]
+        end_date: task.end_date.split('T')[0]
       })
     } else {
       setFormData({
@@ -109,7 +107,7 @@ export default function TaskModal({ task, isOpen, onClose, onSave, subordinates,
               value={formData.title}
               onChange={e => setFormData({...formData, title: e.target.value})}
               required
-              disabled={isLoading || canOnlyEditStatus} // Блокируем если можно редактировать только статус
+              disabled={isLoading || canOnlyEditStatus}
             />
           </div>
 
@@ -120,7 +118,7 @@ export default function TaskModal({ task, isOpen, onClose, onSave, subordinates,
               value={formData.description || ''}
               onChange={e => setFormData({...formData, description: e.target.value})}
               rows={3}
-              disabled={isLoading || canOnlyEditStatus} // Блокируем если можно редактировать только статус
+              disabled={isLoading || canOnlyEditStatus}
             />
           </div>
 
@@ -133,7 +131,7 @@ export default function TaskModal({ task, isOpen, onClose, onSave, subordinates,
                 value={formData.end_date}
                 onChange={e => setFormData({...formData, end_date: e.target.value})}
                 required
-                disabled={isLoading || canOnlyEditStatus} // Блокируем если можно редактировать только статус
+                disabled={isLoading || canOnlyEditStatus}
               />
             </div>
 
@@ -144,7 +142,7 @@ export default function TaskModal({ task, isOpen, onClose, onSave, subordinates,
                 value={formData.priority}
                 onChange={e => setFormData({...formData, priority: e.target.value as any})}
                 required
-                disabled={isLoading || canOnlyEditStatus} // Блокируем если можно редактировать только статус
+                disabled={isLoading || canOnlyEditStatus}
               >
                 <option value="low">Низкий</option>
                 <option value="medium">Средний</option>
@@ -160,7 +158,7 @@ export default function TaskModal({ task, isOpen, onClose, onSave, subordinates,
                 className="form-select"
                 value={formData.status}
                 onChange={e => setFormData({...formData, status: e.target.value as any})}
-                disabled={isLoading} // Статус можно редактировать всегда
+                disabled={isLoading}
               >
                 <option value="to_do">К выполнению</option>
                 <option value="in_progress">Выполняется</option>
@@ -176,7 +174,7 @@ export default function TaskModal({ task, isOpen, onClose, onSave, subordinates,
                 value={formData.responsible_id}
                 onChange={e => setFormData({...formData, responsible_id: parseInt(e.target.value)})}
                 required
-                disabled={isLoading || subordinates.length === 0 || canOnlyEditStatus} // Блокируем если можно редактировать только статус
+                disabled={isLoading || subordinates.length === 0 || canOnlyEditStatus}
               >
                 {subordinates.length === 0 ? (
                   <option value="">Нет доступных подчиненных</option>
