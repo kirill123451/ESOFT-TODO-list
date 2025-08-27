@@ -38,7 +38,7 @@ export default function Profile() {
         
         setIsLoggingOut(true)
         try {
-            fetch('http://localhost:3000/api/auth/logout', {
+            fetch('https://esoft-todo-list-production.up.railway.app/api/auth/logout', {
                 method: 'POST',
                 credentials: 'include'
             }).catch(() => {

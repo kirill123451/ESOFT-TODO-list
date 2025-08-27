@@ -86,7 +86,7 @@ export default function TasksPage() {
       const userData = localStorage.getItem('user')
       if (userData) {
         const user = JSON.parse(userData)
-        const response = await fetch(`http://localhost:3000/api/users/${user.id}/subordinates`, {
+        const response = await fetch(`https://esoft-todo-list-production.up.railway.app/api/users/${user.id}/subordinates`, {
           credentials: 'include'
         })
         
